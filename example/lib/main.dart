@@ -14,12 +14,12 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  String _platformVersion = 'Unknown';
 
   @override
   void initState() {
     super.initState();
     initPlatformState();
+    QuickBreakpad.init(dumpFileSavePath: '.');
   }
 
   // Platform messages are asynchronous, so we initialize in an async method.
@@ -50,7 +50,12 @@ class _MyAppState extends State<MyApp> {
           title: const Text('Plugin example app'),
         ),
         body: Center(
-          child: Text('Running on: $_platformVersion\n'),
+          child: ElevatedButton(
+            onPressed: () {
+              QuickBreakpad.mockCrash();
+            },
+            child: Text('mockCrash'),
+          ),
         ),
       ),
     );

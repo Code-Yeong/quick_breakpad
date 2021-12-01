@@ -42,7 +42,7 @@ bool FlutterWindow::OnCreate() {
   run_loop_->RegisterFlutterInstance(flutter_controller_->engine());
   SetChildContent(flutter_controller_->view()->GetNativeWindow());
 
-  std::thread(crash).detach();
+  // std::thread(crash).detach();
 
   return true;
 }
